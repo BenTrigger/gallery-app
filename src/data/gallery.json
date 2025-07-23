@@ -1,0 +1,37 @@
+[
+  {
+    "src": "/next.svg",
+    "title": "Next.js Logo",
+    "description": "לוגו של Next.js",
+    "category": "logo",
+    "type": "image"
+  },
+  {
+    "src": "/uploads/FREE FREE Printable Israel Coloring Pages for Kids.jpg",
+    "title": "EREL",
+    "description": "ISRAEL FLAG",
+    "category": "art",
+    "type": "image"
+  },
+  {
+    "src": "/uploads/ai-technology-on-pc-screen-artificial-intelligence-computer-colored-icon-or-sign-in-outline-style-vector.jpg",
+    "title": "AI",
+    "description": "PC",
+    "category": "nature",
+    "type": "image"
+  },
+  {
+    "src": "/uploads/337b6ee0-7a3b-4c0d-9b80-b29ec2c05e20.jpg",
+    "title": "FUNNY",
+    "description": "AAA",
+    "category": "other",
+    "type": "image"
+  },
+  {
+    "src": "/uploads/Ai Laptop.png",
+    "title": "A2",
+    "description": "A",
+    "category": "art",
+    "type": "image"
+  }
+]
