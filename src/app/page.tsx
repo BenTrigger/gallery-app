@@ -59,138 +59,196 @@ export default function GalleryPage() {
 
   return (
     <div className={styles.galleryContainer}>
-      <h1 style={{ textAlign: "center", marginBottom: 32 }}>{t('title')}</h1>
-      {/* Swiper ראשי */}
-      <Swiper
-        spaceBetween={30}
-        slidesPerView={1}
-        style={{ maxWidth: 700, margin: '0 auto 32px' }}
-      >
-        {swiperImages.map((img, idx) => (
-          <SwiperSlide key={idx}>
-            <div onClick={() => openModal('swiper', idx)} style={{ cursor: 'pointer' }}>
-              {img.type === "video" ? (
-                <video src={img.url || img.src} className={styles.galleryImage} controls />
-              ) : (
-                <img src={img.src} alt={img.title} className={styles.galleryImage} />
-              )}
-              <div className={styles.galleryTitle}>{img.title}</div>
-              {img.category && <div style={{ fontSize: 12, color: '#888', padding: '0 16px 8px' }}>{img.category}</div>}
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      {/* Grid */}
-      <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginBottom: 32, flexWrap: 'wrap' }}>
-        {categories.map(cat => (
-          <button
-            key={cat}
-            onClick={() => setCategory(cat)}
-            style={{
-              padding: '8px 22px',
-              borderRadius: 20,
-              border: 'none',
-              background: category === cat ? '#222' : '#eee',
-              color: category === cat ? '#fff' : '#222',
-              fontWeight: 500,
-              fontSize: 16,
-              cursor: 'pointer',
-              marginBottom: 8,
-              transition: 'background 0.2s, color 0.2s',
-            }}
-          >
-            {cat === 'all' ? t('all') || 'All' : cat}
-          </button>
-        ))}
-      </div>
-      <div className={styles.galleryGrid}>
-        {filteredGridImages.map((img, idx) => (
-          <div
-            className={styles.galleryItem}
-            key={idx}
-            onClick={() => openModal('grid', idx)}
-          >
-            {img.type === "video" ? (
-              <video src={img.url || img.src} className={styles.galleryImage} controls />
-            ) : (
-              <img
-                src={img.src}
-                alt={img.title}
-                className={styles.galleryImage}
-                onError={e => (e.currentTarget.src = "/file.svg")}
-              />
-            )}
-            <div className={styles.galleryTitle}>{img.title}</div>
-            {img.category && <div style={{ fontSize: 12, color: '#888', padding: '0 16px 8px' }}>{img.category}</div>}
-            <button onClick={e => { e.stopPropagation(); addToCart(img); }} style={{ margin: '8px 16px', padding: '6px 18px', borderRadius: 8, background: '#b85c38', color: '#fff', border: 'none', fontWeight: 500, cursor: 'pointer' }}>{t('add_to_cart')}</button>
+      {/* Hero Section */}
+      <section className={styles.heroSection}>
+        <h1 className={styles.heroTitle}>{t('title')}</h1>
+        <p className={styles.heroSubtitle}>
+          {t('hero_subtitle') || 'Discover our curated collection of stunning artworks and creative pieces'}
+        </p>
+      </section>
+
+      {/* Featured Text Section */}
+      <section className={styles.featuredText}>
+        <h2>{t('featured_title') || 'A great place to share about a sale!'}</h2>
+        <p>
+          {t('featured_description') || 'Excited to Launch My New Website - Explore our latest collection featuring unique pieces that tell compelling stories through art.'}
+        </p>
+      </section>
+
+      {/* Swiper Section */}
+      {swiperImages.length > 0 && (
+        <section className={styles.swiperSection}>
+          <div className={styles.swiperContainer}>
+            <Swiper
+              spaceBetween={30}
+              slidesPerView={1}
+              loop={true}
+              autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+              }}
+            >
+              {swiperImages.map((img, idx) => (
+                <SwiperSlide key={idx}>
+                  <div className={styles.swiperSlide} onClick={() => openModal('swiper', idx)}>
+                    {img.type === "video" ? (
+                      <video src={img.url || img.src} className={styles.swiperImage} controls />
+                    ) : (
+                      <img src={getImageSrc(img)} alt={img.title} className={styles.swiperImage} />
+                    )}
+                    <div className={styles.swiperContent}>
+                      <h3 className={styles.swiperTitle}>{img.title}</h3>
+                      {img.description && (
+                        <p className={styles.swiperDescription}>{img.description}</p>
+                      )}
+                      <button className={styles.swiperButton}>
+                        {t('learn_more') || 'Learn More'}
+                      </button>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
-        ))}
-      </div>
-      {/* מודל */}
+        </section>
+      )}
+
+      {/* Categories Section */}
+      <section className={styles.categoriesSection}>
+        <div className={styles.categoriesContainer}>
+          <h2 className={styles.categoriesTitle}>{t('categories_title') || 'Featured Series'}</h2>
+          <div className={styles.categoriesGrid}>
+            {['Vivid Series', 'SGIATH Series', 'Short Stories'].map((cat, idx) => (
+              <div key={cat} className={styles.categoryCard}>
+                <img 
+                  src={gridImages[idx]?.src || "/file.svg"} 
+                  alt={cat} 
+                  className={styles.categoryImage}
+                />
+                <div className={styles.categoryContent}>
+                  <h3 className={styles.categoryTitle}>{cat}</h3>
+                  <p className={styles.categoryDescription}>
+                    {t(`category_${cat.toLowerCase().replace(' ', '_')}_description`) || 
+                     'Explore our unique collection featuring stunning artworks and creative pieces.'}
+                  </p>
+                  <button className={styles.categoryButton}>
+                    {t('learn_more') || 'Learn More'}
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Grid Section */}
+      <section className={styles.gallerySection}>
+        <div className={styles.galleryContainer}>
+          <h2 className={styles.galleryTitle}>{t('gallery_title') || 'Gallery Collection'}</h2>
+          
+          {/* Category Filters */}
+          <div className={styles.categoryFilters}>
+            {categories.map(cat => (
+              <button
+                key={cat}
+                onClick={() => setCategory(cat)}
+                className={`${styles.categoryFilter} ${category === cat ? styles.active : ''}`}
+              >
+                {cat === 'all' ? t('all') || 'All' : cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Gallery Grid */}
+          <div className={styles.galleryGrid}>
+            {filteredGridImages.map((img, idx) => (
+              <div
+                className={styles.galleryItem}
+                key={idx}
+                onClick={() => openModal('grid', idx)}
+              >
+                {img.type === "video" ? (
+                  <video src={img.url || img.src} className={styles.galleryImage} controls />
+                ) : (
+                  <img
+                    src={getImageSrc(img)}
+                    alt={img.title}
+                    className={styles.galleryImage}
+                    onError={e => (e.currentTarget.src = "/file.svg")}
+                  />
+                )}
+                <div className={styles.galleryContent}>
+                  <h3 className={styles.galleryTitle}>{img.title}</h3>
+                  {img.category && (
+                    <div className={styles.galleryCategory}>{img.category}</div>
+                  )}
+                  <div className={styles.galleryActions}>
+                    <button 
+                      onClick={e => { e.stopPropagation(); addToCart(img); }} 
+                      className={styles.addToCartButton}
+                    >
+                      {t('add_to_cart')}
+                    </button>
+                    <button className={styles.viewButton}>
+                      {t('view') || 'View'}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Modal */}
       {modal && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            background: "rgba(0,0,0,0.7)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 1000,
-          }}
-          onClick={closeModal}
-        >
-          <div
-            style={{ background: "#fff", borderRadius: 12, padding: 24, maxWidth: 900, maxHeight: "90vh", overflowY: 'auto' }}
-            onClick={e => e.stopPropagation()}
-          >
+        <div className={styles.modal} onClick={closeModal}>
+          <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
+            <button className={styles.modalClose} onClick={closeModal}>×</button>
             {modal.type === 'swiper' ? (
               <Swiper
                 initialSlide={modal.index}
                 spaceBetween={30}
                 slidesPerView={1}
-                style={{ maxWidth: 600, margin: '0 auto 32px' }}
+                loop={true}
               >
                 {swiperImages.map((img, idx) => (
                   <SwiperSlide key={idx}>
                     {img.type === "video" ? (
-                      <video src={img.url || img.src} style={{ maxWidth: "100%", maxHeight: 400, display: "block", margin: "0 auto" }} controls autoPlay />
+                      <video src={img.url || img.src} className={styles.modalImage} controls autoPlay />
                     ) : (
-                      <img src={img.src} alt={img.title} style={{ maxWidth: "100%", maxHeight: 400, display: "block", margin: "0 auto" }} />
+                      <img src={getImageSrc(img)} alt={img.title} className={styles.modalImage} />
                     )}
-                    <div style={{ textAlign: "center", marginTop: 16, fontWeight: 500 }}>{img.title}</div>
-                    {img.description && <div style={{ textAlign: "center", marginTop: 8, color: '#555' }}>{img.description}</div>}
-                    {img.category && <div style={{ textAlign: "center", marginTop: 4, color: '#888', fontSize: 13 }}>{img.category}</div>}
+                    <div className={styles.modalInfo}>
+                      <h3 className={styles.modalTitle}>{img.title}</h3>
+                      {img.description && (
+                        <p className={styles.modalDescription}>{img.description}</p>
+                      )}
+                      {img.category && (
+                        <div className={styles.galleryCategory}>{img.category}</div>
+                      )}
+                    </div>
                   </SwiperSlide>
                 ))}
               </Swiper>
             ) : (
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
-                gap: 16,
-                marginTop: 24,
-                marginBottom: 16
-              }}>
-                {filteredGridImages.map((img, idx) => (
-                  <div key={idx} style={{ cursor: 'pointer', border: idx === modal.index ? '2px solid #b85c38' : '2px solid transparent', borderRadius: 8, padding: 4, background: '#fafafa' }}
-                    onClick={() => { setModal({ type: 'grid', index: idx }); }}
-                  >
-                    {img.type === "video" ? (
-                      <video src={img.url || img.src} style={{ width: '100%', height: 80, objectFit: 'cover', borderRadius: 6 }} />
-                    ) : (
-                      <img src={img.src} alt={img.title} style={{ width: '100%', height: 80, objectFit: 'cover', borderRadius: 6 }} />
-                    )}
-                  </div>
-                ))}
+              <div>
+                <img 
+                  src={getImageSrc(filteredGridImages[modal.index])} 
+                  alt={filteredGridImages[modal.index].title} 
+                  className={styles.modalImage} 
+                />
+                <div className={styles.modalInfo}>
+                  <h3 className={styles.modalTitle}>{filteredGridImages[modal.index].title}</h3>
+                  {filteredGridImages[modal.index].description && (
+                    <p className={styles.modalDescription}>{filteredGridImages[modal.index].description}</p>
+                  )}
+                  {filteredGridImages[modal.index].category && (
+                    <div className={styles.galleryCategory}>{filteredGridImages[modal.index].category}</div>
+                  )}
+                </div>
               </div>
             )}
-            <button style={{ margin: "24px auto 0", display: "block" }} onClick={closeModal}>
-              Close
-            </button>
           </div>
         </div>
       )}
