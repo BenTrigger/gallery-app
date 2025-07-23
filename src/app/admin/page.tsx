@@ -349,7 +349,7 @@ export default function AdminPage() {
               <div className={styles.storiesList}>
                 {[
                   'Art Miami 2022 Art Basel Week',
-                  'Orit Fuchs',
+                  'Morin',
                   'Museum Exhibition Seoul, Korea'
                 ].map((story, idx) => (
                   <div key={idx} className={styles.storyItem}>

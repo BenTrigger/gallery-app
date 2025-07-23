@@ -227,7 +227,7 @@ export default function GalleryPage() {
           <div className={styles.storiesGrid}>
             {[
               { title: 'Art Miami 2022 Art Basel Week', image: gridImages[0]?.src },
-              { title: 'Orit Fuchs', image: gridImages[1]?.src },
+              { title: 'Morin', image: gridImages[1]?.src },
               { title: 'Museum Exhibition Seoul, Korea', image: gridImages[2]?.src }
             ].map((story, idx) => (
               <div key={idx} className={styles.storyCard}>
@@ -308,7 +308,7 @@ export default function GalleryPage() {
           </div>
           
           <div className={styles.footerSection}>
-            <h3 className={styles.footerTitle}>{t('sign_up_updates') || 'SIGN UP FOR ORIT FUCHS UPDATES'}</h3>
+            <h3 className={styles.footerTitle}>{t('sign_up_updates') || 'SIGN UP FOR MORIN UPDATES'}</h3>
             <p className={styles.footerDescription}>
               {t('footer_description') || 'By entering your email address below, you consent to receiving our newsletter with access to our latest collections, events and initiatives. More details on this are provided in our Privacy Policy'}
             </p>
@@ -327,7 +327,7 @@ export default function GalleryPage() {
         
         <div className={styles.footerBottom}>
           <p className={styles.copyright}>
-            © 2025 ORITFUCHS • yayu.co.il
+            © 2025 MORIN • morinale.com
           </p>
         </div>
       </footer>

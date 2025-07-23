@@ -1,4 +1,17 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MORIN Gallery
+
+This is a [Next.js](https://nextjs.org) project for the MORIN Gallery website, inspired by modern art gallery designs. The project features a multilingual gallery with admin panel, cart functionality, and comprehensive content management.
+
+## Features
+
+- **Multilingual Support**: English, Hebrew, Russian, French, Italian, Spanish
+- **Gallery Sections**: Hero, Featured Text, Swiper, Categories, Grid Gallery, Video Art, Stories
+- **Admin Panel**: Dashboard, Content Management, Categories, Stories, Video, Newsletter, Settings
+- **Shopping Cart**: Add items, manage quantities, checkout process
+- **Responsive Design**: Modern, clean design that works on all devices
+- **File Upload**: Local file upload with preparation for S3 integration
+
+## Getting Started
 
 ## Getting Started
 
