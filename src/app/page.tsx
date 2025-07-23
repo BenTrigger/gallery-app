@@ -200,6 +200,138 @@ export default function GalleryPage() {
         </div>
       </section>
 
+      {/* Video Art Collection Section */}
+      <section className={styles.videoArtSection}>
+        <div className={styles.videoArtContainer}>
+          <h2 className={styles.videoArtTitle}>{t('video_art_collection') || 'VideoArt Collection'}</h2>
+          <div className={styles.videoArtGrid}>
+            {gridImages.filter(img => img.type === 'video').slice(0, 4).map((video, idx) => (
+              <div key={idx} className={styles.videoArtItem}>
+                <video src={video.url || video.src} className={styles.videoArtVideo} controls />
+                <div className={styles.videoArtContent}>
+                  <h3 className={styles.videoArtTitle}>{video.title}</h3>
+                  <button className={styles.videoArtButton}>
+                    {t('learn_more') || 'Learn More'}
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stories Section */}
+      <section className={styles.storiesSection}>
+        <div className={styles.storiesContainer}>
+          <h2 className={styles.storiesTitle}>{t('stories') || 'STORIES'}</h2>
+          <div className={styles.storiesGrid}>
+            {[
+              { title: 'Art Miami 2022 Art Basel Week', image: gridImages[0]?.src },
+              { title: 'Orit Fuchs', image: gridImages[1]?.src },
+              { title: 'Museum Exhibition Seoul, Korea', image: gridImages[2]?.src }
+            ].map((story, idx) => (
+              <div key={idx} className={styles.storyCard}>
+                <img src={story.image || "/file.svg"} alt={story.title} className={styles.storyImage} />
+                <div className={styles.storyContent}>
+                  <h3 className={styles.storyTitle}>{story.title}</h3>
+                  <button className={styles.storyButton}>
+                    {t('learn_more') || 'Learn More'}
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className={styles.newsletterSection}>
+        <div className={styles.newsletterContainer}>
+          <h2 className={styles.newsletterTitle}>{t('join_mailing_list') || 'Join our mailing list'}</h2>
+          <p className={styles.newsletterSubtitle}>
+            {t('newsletter_subtitle') || 'No spam, unsubscribe anytime!'}
+          </p>
+          <div className={styles.newsletterForm}>
+            <input 
+              type="email" 
+              placeholder={t('email_address') || 'Email address'} 
+              className={styles.newsletterInput}
+            />
+            <button className={styles.newsletterButton}>
+              {t('join') || 'Join'}
+            </button>
+          </div>
+          <p className={styles.newsletterNote}>
+            {t('newsletter_note') || '*You\'re signing up to receive our emails and can unsubscribe at any time.'}
+          </p>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className={styles.footer}>
+        <div className={styles.footerContainer}>
+          <div className={styles.footerSection}>
+            <h3 className={styles.footerTitle}>{t('exclusive_services') || 'EXCLUSIVE SERVICES'}</h3>
+            <ul className={styles.footerList}>
+              <li><a href="#">{t('search') || 'Search'}</a></li>
+              <li><a href="#">{t('contact') || 'Contact'}</a></li>
+            </ul>
+          </div>
+          
+          <div className={styles.footerSection}>
+            <h3 className={styles.footerTitle}>{t('need_help') || 'NEED HELP?'}</h3>
+            <ul className={styles.footerList}>
+              <li><a href="#">{t('contact_us') || 'Contact Us'}</a></li>
+              <li><a href="#">{t('shipping_services') || 'Shipping Services'}</a></li>
+            </ul>
+          </div>
+          
+          <div className={styles.footerSection}>
+            <h3 className={styles.footerTitle}>{t('the_company') || 'THE COMPANY'}</h3>
+            <ul className={styles.footerList}>
+              <li><a href="#">{t('about') || 'About'}</a></li>
+              <li><a href="#">{t('privacy_cookies') || 'Privacy & Cookies'}</a></li>
+              <li><a href="#">{t('accessibility_statement') || 'Accessibility Statement'}</a></li>
+            </ul>
+          </div>
+          
+          <div className={styles.footerSection}>
+            <h3 className={styles.footerTitle}>{t('find_us_on') || 'FIND US ON'}</h3>
+            <div className={styles.socialLinks}>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                Facebook
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                Instagram
+              </a>
+            </div>
+          </div>
+          
+          <div className={styles.footerSection}>
+            <h3 className={styles.footerTitle}>{t('sign_up_updates') || 'SIGN UP FOR ORIT FUCHS UPDATES'}</h3>
+            <p className={styles.footerDescription}>
+              {t('footer_description') || 'By entering your email address below, you consent to receiving our newsletter with access to our latest collections, events and initiatives. More details on this are provided in our Privacy Policy'}
+            </p>
+            <div className={styles.footerNewsletter}>
+              <input 
+                type="email" 
+                placeholder={t('join_mailing_list') || 'Join our mailing list'} 
+                className={styles.footerInput}
+              />
+              <button className={styles.footerButton}>
+                {t('join') || 'Join'}
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div className={styles.footerBottom}>
+          <p className={styles.copyright}>
+            © 2025 ORITFUCHS • yayu.co.il
+          </p>
+        </div>
+      </footer>
+
       {/* Modal */}
       {modal && (
         <div className={styles.modal} onClick={closeModal}>

@@ -348,6 +348,333 @@
   color: white;
 }
 
+/* Video Art Collection Section */
+.videoArtSection {
+  padding: 80px 5vw;
+  background: #f8f9fa;
+}
+
+.videoArtContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.videoArtTitle {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 60px;
+  color: #2c3e50;
+}
+
+.videoArtGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+.videoArtItem {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.videoArtItem:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.videoArtVideo {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.videoArtContent {
+  padding: 24px;
+}
+
+.videoArtTitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: #2c3e50;
+}
+
+.videoArtButton {
+  background: #2c3e50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.videoArtButton:hover {
+  background: #34495e;
+}
+
+/* Stories Section */
+.storiesSection {
+  padding: 80px 5vw;
+  background: white;
+}
+
+.storiesContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.storiesTitle {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 60px;
+  color: #2c3e50;
+}
+
+.storiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+}
+
+.storyCard {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.storyCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.storyImage {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.storyContent {
+  padding: 30px;
+}
+
+.storyTitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.storyButton {
+  background: #2c3e50;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.storyButton:hover {
+  background: #34495e;
+}
+
+/* Newsletter Section */
+.newsletterSection {
+  padding: 80px 5vw;
+  background: #f8f9fa;
+  text-align: center;
+}
+
+.newsletterContainer {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.newsletterTitle {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.newsletterSubtitle {
+  font-size: 1.1rem;
+  color: #6c757d;
+  margin-bottom: 40px;
+}
+
+.newsletterForm {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.newsletterInput {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.newsletterInput:focus {
+  border-color: #2c3e50;
+}
+
+.newsletterButton {
+  background: #2c3e50;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-weight: 500;
+}
+
+.newsletterButton:hover {
+  background: #34495e;
+}
+
+.newsletterNote {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+/* Footer */
+.footer {
+  background: #2c3e50;
+  color: white;
+  padding: 60px 5vw 20px;
+}
+
+.footerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footerSection {
+  margin-bottom: 30px;
+}
+
+.footerTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #ecf0f1;
+}
+
+.footerList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footerList li {
+  margin-bottom: 10px;
+}
+
+.footerList a {
+  color: #bdc3c7;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footerList a:hover {
+  color: white;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 20px;
+}
+
+.socialLink {
+  color: #bdc3c7;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.socialLink:hover {
+  color: white;
+}
+
+.footerDescription {
+  color: #bdc3c7;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.footerNewsletter {
+  display: flex;
+  gap: 12px;
+}
+
+.footerInput {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #34495e;
+  border-radius: 4px;
+  background: #34495e;
+  color: white;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.footerInput::placeholder {
+  color: #95a5a6;
+}
+
+.footerButton {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.footerButton:hover {
+  background: #c0392b;
+}
+
+.footerBottom {
+  border-top: 1px solid #34495e;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.copyright {
+  color: #95a5a6;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
 /* Modal */
 .modal {
   position: fixed;
@@ -434,7 +761,10 @@
   }
   
   .categoriesTitle,
-  .galleryTitle {
+  .galleryTitle,
+  .videoArtTitle,
+  .storiesTitle,
+  .newsletterTitle {
     font-size: 2rem;
   }
   
@@ -451,6 +781,15 @@
     padding: 10px 20px;
     font-size: 0.9rem;
   }
+  
+  .newsletterForm {
+    flex-direction: column;
+  }
+  
+  .footerContainer {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -459,7 +798,11 @@
   .featuredText,
   .swiperSection,
   .categoriesSection,
-  .gallerySection {
+  .gallerySection,
+  .videoArtSection,
+  .storiesSection,
+  .newsletterSection,
+  .footer {
     padding-left: 20px;
     padding-right: 20px;
   }
@@ -474,6 +817,16 @@
   }
   
   .categoriesGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .videoArtGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .storiesGrid {
     grid-template-columns: 1fr;
     gap: 24px;
   }
